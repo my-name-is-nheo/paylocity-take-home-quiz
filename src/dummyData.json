@@ -1,0 +1,41 @@
+[
+  {
+    "id": "adjiwj-123u0",
+    "first_name": "Dwight",
+    "last_name": "Schrute",
+    "dependents": [
+      {
+        "id": "onwieghvbhwe-14ir-03853riof",
+        "first_name": "Angela",
+        "last_name": "Martin",
+        "relationship": "Spouse"
+      }
+    ]
+  },
+  {
+    "id": "jdoainfh1-1239oj",
+    "first_name": "James",
+    "last_name": "Halpert",
+    "dependents": [
+      {
+        "id": "foianaviehf=102=-123-14",
+        "first_name": "Pamela",
+        "last_name": "Beesley",
+        "relationship": "Spouse"
+      }
+    ]
+  },
+  {
+    "id": "FOIAMW-123nj1on",
+    "first_name": "Michael",
+    "last_name": "Scott",
+    "dependents": [
+      {
+        "id": "djwaiofn-1231-512rf",
+        "first_name": "Hollis",
+        "last_name": "Flax",
+        "relationship": "Spouse"
+      }
+    ]
+  }
+]

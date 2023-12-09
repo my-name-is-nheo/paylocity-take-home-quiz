@@ -1,0 +1,5 @@
+export const EMPLOYEE_COSTS_PER_YEAR = 1000;
+export const DEPEDENTS_COSTS_PER_YEAR = 500;
+export const EMPLOYEE_BI_WEEKLY_PAYCHECK = 2000;
+export const PAYCHECKS_PER_YEAR = 26;
+export const DISCOUNT_PERCENTAGE = 10;
