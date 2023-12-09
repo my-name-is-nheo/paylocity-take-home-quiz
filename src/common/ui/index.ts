@@ -1,4 +1,4 @@
-import { Button } from "./Button";
+import { Button, ButtonColor } from "./Button";
 import { EmptyState } from "./EmptyState";
 import { DeleteModal } from "./DeleteModal";
 import { HeaderWithImage } from "./HeaderWithImage";
@@ -15,5 +15,6 @@ export {
   SelectField,
   Input,
   Icon,
+  ButtonColor,
   Header,
 };

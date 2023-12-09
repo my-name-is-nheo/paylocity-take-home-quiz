@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Header, HeaderProps } from "./Header";
+import { Header, HeaderProps } from "../Header/Header";
 
 interface HeaderWithImageProps extends HeaderProps {
   source: string;

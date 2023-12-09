@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { Icon, IconProps } from "./Icon";
-import { Header } from "./Header";
+import { Icon, IconProps } from "../Icon/Icon";
+import { Header } from "../Header";
 
 interface DeleteModalProps {
   title: string;

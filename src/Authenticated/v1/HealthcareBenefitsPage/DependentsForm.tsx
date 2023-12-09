@@ -1,7 +1,6 @@
 import { FC, Fragment, useEffect } from "react";
 import { FieldArray, useFormikContext } from "formik";
-import { Button, Input, SelectField } from "../../../common";
-import { ButtonColor } from "../../../common/ui/Button";
+import { Button, Input, SelectField, ButtonColor } from "../../../common";
 import { EmployeesFormSchema, emptyDependant } from "./EmployeesForm";
 
 const DependentsForm: FC = () => {

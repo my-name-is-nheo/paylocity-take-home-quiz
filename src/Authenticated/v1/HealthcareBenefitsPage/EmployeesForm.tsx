@@ -4,10 +4,10 @@ import { InferType, array, object, string } from "yup";
 import { nanoid } from "nanoid";
 import { HealthcareContext } from "./HealthcareContext";
 import { Input, Button, Icon } from "../../../common";
-import { ButtonColor } from "../../../common/ui/Button";
 import { Employee } from "./types";
 import { apiRequest } from "./utilities";
 import { DependentsForm } from "./DependentsForm";
+import { ButtonColor } from "../../../common/ui/Button";
 
 const SCHEMA = object({
   first_name: string().min(2, "Two letters!").required("Required Field!"),

@@ -1,11 +1,5 @@
 import { FC, ButtonHTMLAttributes } from "react";
-
-export enum ButtonColor {
-  Green = "green",
-  Blue = "blue",
-  Red = "red",
-  White = "white",
-}
+import { ButtonColor } from "./types";
 
 const Button: FC<{
   onClick?: () => void;

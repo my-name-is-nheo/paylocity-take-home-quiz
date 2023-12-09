@@ -7,10 +7,10 @@ import {
   EmptyState,
   HeaderWithImage,
   Header,
+  ButtonColor,
 } from "../../../common";
 import { Employee, HealthcareModalModes } from "./types";
 import { EmployeesForm } from "./EmployeesForm";
-import { ButtonColor } from "../../../common/ui/Button";
 import {
   apiRequest,
   calculateBenefits,
