@@ -59,8 +59,6 @@ const HealthcareBenefitsPage: React.FC = () => {
     setModalMode(null);
   }, [selectedEmployee, setEmployeeData, setSelectedEmployee, setModalMode]);
 
-  //make notes on how you would make this more scalable
-
   return (
     <HealthcareBenefitsProvider
       modalMode={modalMode}
