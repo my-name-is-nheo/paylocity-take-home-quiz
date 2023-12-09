@@ -16,7 +16,7 @@ const HeaderWithImage: FC<HeaderWithImageProps> = ({
 }) => {
   return (
     <div className="flex justify-center items-center">
-      <img className={imageClassName} src={source} alt={alt} />
+      <img className={imageClassName} src={source} alt={alt} loading="lazy" />
       <Header label={label} headerClassName={headerClassName} />
     </div>
   );
