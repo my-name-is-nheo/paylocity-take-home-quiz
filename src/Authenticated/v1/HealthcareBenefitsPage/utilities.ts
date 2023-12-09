@@ -52,7 +52,6 @@ export const apiRequest = async (
 
   let newlyStoredData;
   if (!rawStoredData) {
-    console.log("entered here");
     localStorage.setItem("state", JSON.stringify(dummyData));
     newlyStoredData = localStorage.getItem("state");
   }

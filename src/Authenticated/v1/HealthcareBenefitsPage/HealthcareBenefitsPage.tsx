@@ -3,7 +3,6 @@ import { HealthcareBenefitsProvider } from "./HealthcareContext";
 import {
   DeleteModal,
   Button,
-  paylocityLogo,
   EmptyState,
   HeaderWithImage,
   Header,
@@ -11,6 +10,7 @@ import {
 } from "../../../common";
 import { Employee, HealthcareModalModes } from "./types";
 import { EmployeesForm } from "./EmployeesForm";
+import paylocityLogo from "../../../common/assets/paylocity.png";
 import {
   apiRequest,
   calculateBenefits,

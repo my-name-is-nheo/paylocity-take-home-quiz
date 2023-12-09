@@ -5,7 +5,7 @@ export interface IconProps {
 }
 
 const Icon: FC<IconProps> = ({ icon }) => {
-  return <img src={require(`../assets/${icon}.png`)} />;
+  return <img src={require(`../../assets/${icon}.png`)} />;
 };
 
 export { Icon };
