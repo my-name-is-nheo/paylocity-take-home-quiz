@@ -102,6 +102,7 @@ const HealthcareBenefitsPage: React.FC = () => {
                 label={`Employees List ${sortBy === "asc" ? "☝️" : "👇"}`}
                 onLabelClick={handleSortBy}
               />
+              <div className="italic">* - Eligible for Discount!</div>
               <ul className="h-[500px]">
                 {sortedEmployeeData.map((employee) => (
                   <div
