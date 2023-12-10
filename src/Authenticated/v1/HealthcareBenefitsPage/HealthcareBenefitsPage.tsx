@@ -17,7 +17,7 @@ import {
   formatUsingIntl,
   initialCurrentEmployeeState,
 } from "./utilities";
-import { DISCOUNT_PERCENTAGE } from "./constants";
+import { DISCOUNT_PERCENTAGE, PAYCHECKS_PER_YEAR } from "./constants";
 
 const HealthcareBenefitsPage: React.FC = () => {
   const [modalMode, setModalMode] = useState<HealthcareModalModes | null>(null);
@@ -109,7 +109,7 @@ const HealthcareBenefitsPage: React.FC = () => {
                     <div className="flex flex-row">
                       <div className="flex-1">
                         <Header
-                          label="Information"
+                          label="Additional Information"
                           headerClassName="font-bold underline"
                         />
                         <div className="flex flex-row">
@@ -130,10 +130,13 @@ const HealthcareBenefitsPage: React.FC = () => {
                           label="Calculated Benefits"
                           headerClassName="font-bold underline"
                         />
-                        {formatUsingIntl(
-                          calculateBenefits(employee, DISCOUNT_PERCENTAGE)
-                        )}
-                        <li></li>
+                        <div className="flex-1">
+                          Biweekly Paycheck:{" "}
+                          {formatUsingIntl(
+                            calculateBenefits(employee, DISCOUNT_PERCENTAGE) /
+                              PAYCHECKS_PER_YEAR
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>
