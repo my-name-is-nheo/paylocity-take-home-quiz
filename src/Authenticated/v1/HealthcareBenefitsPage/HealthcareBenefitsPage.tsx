@@ -28,7 +28,7 @@ const HealthcareBenefitsPage: React.FC = () => {
   const [selectedEmployee, setSelectedEmployee] = useState<Employee>(
     initialCurrentEmployeeState
   );
-  localStorage.clear();
+
   const closeModal = useCallback(() => setModalMode(null), [setModalMode]);
 
   useEffect(() => {
