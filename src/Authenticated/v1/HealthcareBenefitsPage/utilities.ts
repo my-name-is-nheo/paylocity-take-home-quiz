@@ -167,7 +167,8 @@ export const formatUsingIntl = (
  *  calculate benefits of all employees
  * @param {Employee} employee - list of employees
  * @param {number} specialDiscount - special discount for anyone whose name starts with ‘A’, employee or dependent
- * @param {number} [salary] - salary of employee
+ * @param {number} [paycheck] - total $$ of employee's current paycheck
+ * @param {number} [paycheckFrequencyPerYear] - total number of paychecks per year
  * @param {number} [individualCost] - cost of benefit for individual
  * @param {number} [dependentCost] - cost of benefit for depedents
  * @returns {number} returns annual calculated benefits after discount and before deduction
@@ -175,7 +176,8 @@ export const formatUsingIntl = (
 export const calculateBenefits = (
   employee: Employee,
   specialDiscount?: number,
-  salary?: number,
+  paycheck?: number,
+  paycheckFrequencyPerYear?: number,
   individualCost?: number,
   dependentCost?: number
 ): number => {
@@ -184,7 +186,9 @@ export const calculateBenefits = (
     employee.first_name
   );
   let employeeSalary =
-    salary ?? EMPLOYEE_BI_WEEKLY_PAYCHECK * PAYCHECKS_PER_YEAR;
+    (paycheck ?? EMPLOYEE_BI_WEEKLY_PAYCHECK) *
+    (paycheckFrequencyPerYear ?? PAYCHECKS_PER_YEAR);
+
   let totalIndividualCost = isEmployeeEligibleForDiscount
     ? calculateDiscountedCost(
         individualCost ?? EMPLOYEE_COSTS_PER_YEAR,
