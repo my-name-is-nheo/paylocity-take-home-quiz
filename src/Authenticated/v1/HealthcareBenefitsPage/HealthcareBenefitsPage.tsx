@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { HealthcareBenefitsProvider } from "./HealthcareContext";
 import {
   DeleteModal,
@@ -19,10 +19,12 @@ import {
   isEligibleForDiscount,
 } from "./utilities";
 import { DISCOUNT_PERCENTAGE, PAYCHECKS_PER_YEAR } from "./constants";
+import { orderBy } from "lodash";
 
 const HealthcareBenefitsPage: React.FC = () => {
   const [modalMode, setModalMode] = useState<HealthcareModalModes | null>(null);
   const [employeeData, setEmployeeData] = useState<Employee[]>([]);
+  const [sortBy, setSortBy] = useState<"asc" | "desc">("desc");
   const [selectedEmployee, setSelectedEmployee] = useState<Employee>(
     initialCurrentEmployeeState
   );
@@ -47,6 +49,16 @@ const HealthcareBenefitsPage: React.FC = () => {
 
     fetchData();
   }, []);
+
+  const sortedEmployeeData = useMemo(
+    () => orderBy(employeeData, (employee) => employee.first_name, [sortBy]),
+    [sortBy]
+  );
+
+  const handleSortBy = useCallback(
+    () => setSortBy((prevSortBy) => (prevSortBy === "asc" ? "desc" : "asc")),
+    []
+  );
 
   const handleDelete = useCallback(async () => {
     await apiRequest("DELETE", `/users/${selectedEmployee.id}`, (employees) =>
@@ -78,7 +90,7 @@ const HealthcareBenefitsPage: React.FC = () => {
           headerClassName="text-lg font-medium text-slate-900"
         />
         <div className="flex justify-center flex-col border border-black p-4 overflow-y-auto">
-          {!employeeData.length ? (
+          {!sortedEmployeeData.length ? (
             <EmptyState
               className="flex justify-center"
               text=" No employees Registered. Add to get started!"
@@ -87,10 +99,11 @@ const HealthcareBenefitsPage: React.FC = () => {
             <>
               <Header
                 headerClassName="font-bold underline"
-                label="Employees List"
+                label={`Employees List ${sortBy === "asc" ? "☝️" : "👇"}`}
+                onLabelClick={handleSortBy}
               />
               <ul className="h-[500px]">
-                {employeeData.map((employee) => (
+                {sortedEmployeeData.map((employee) => (
                   <div
                     key={`healthcare-benefits-page-table-${employee.id}`}
                     className="border border-black hover:border-black my-2 px-2 py-3"

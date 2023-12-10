@@ -10,6 +10,6 @@ module.exports = {
     "^.+\\.(ts|tsx)?$": "ts-jest",
     "^.+\\.(js|jsx)$": "babel-jest",
   },
-  transformIgnorePatterns: [`/node_modules/(?!nanoid)`],
+  transformIgnorePatterns: [`/node_modules/(?!lodash|nanoid)`],
   setupFilesAfterEnv: ["./setupTests.js"],
 };
