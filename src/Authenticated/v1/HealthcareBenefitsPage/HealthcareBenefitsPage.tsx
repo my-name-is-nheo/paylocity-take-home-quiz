@@ -52,7 +52,7 @@ const HealthcareBenefitsPage: React.FC = () => {
 
   const sortedEmployeeData = useMemo(
     () => orderBy(employeeData, (employee) => employee.first_name, [sortBy]),
-    [sortBy]
+    [sortBy, employeeData]
   );
 
   const handleSortBy = useCallback(
