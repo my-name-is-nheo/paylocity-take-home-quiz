@@ -127,11 +127,11 @@ export const initialCurrentEmployeeState: Employee = {
 
 /**
  * checks if a given string starts with 'A' or 'a' in a case-insensitive manner.
- * @param {string} str - string to check
+ * @param {string} firstName - string to check
  * @returns {boolean} returns true if the string starts with 'A' or 'a', otherwise false.
  */
-const isEligibleForDiscount = (str: string) =>
-  str.charAt(0).toLowerCase() === "a";
+export const isEligibleForDiscount = (firstName: string) =>
+  firstName.charAt(0).toLowerCase() === "a";
 
 /**
  * calculates the discounted cost after special discount

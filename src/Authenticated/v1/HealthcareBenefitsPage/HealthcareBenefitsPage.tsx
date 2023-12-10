@@ -16,6 +16,7 @@ import {
   calculateBenefits,
   formatUsingIntl,
   initialCurrentEmployeeState,
+  isEligibleForDiscount,
 } from "./utilities";
 import { DISCOUNT_PERCENTAGE, PAYCHECKS_PER_YEAR } from "./constants";
 
@@ -25,7 +26,7 @@ const HealthcareBenefitsPage: React.FC = () => {
   const [selectedEmployee, setSelectedEmployee] = useState<Employee>(
     initialCurrentEmployeeState
   );
-
+  localStorage.clear();
   const closeModal = useCallback(() => setModalMode(null), [setModalMode]);
 
   useEffect(() => {
@@ -88,7 +89,7 @@ const HealthcareBenefitsPage: React.FC = () => {
                 headerClassName="font-bold underline"
                 label="Employees List"
               />
-              <ul>
+              <ul className="h-[500px]">
                 {employeeData.map((employee) => (
                   <div
                     key={`healthcare-benefits-page-table-${employee.id}`}
@@ -117,13 +118,17 @@ const HealthcareBenefitsPage: React.FC = () => {
                           <span className="mr-1" />
                           {employee.dependents?.length}
                         </div>
-                        {employee.dependents?.map((dependent) => (
-                          <li
-                            key={`health-care-benefits-page-table-dependent-${dependent.id}`}
-                          >
-                            {dependent.first_name} {dependent.last_name}
-                          </li>
-                        ))}
+                        <div className="overflow-y-scroll max-h-[200px]">
+                          {employee.dependents?.map((dependent) => (
+                            <li
+                              key={`health-care-benefits-page-table-dependent-${dependent.id}`}
+                            >
+                              {dependent.first_name} {dependent.last_name}{" "}
+                              {isEligibleForDiscount(dependent.first_name) &&
+                                "*"}
+                            </li>
+                          ))}
+                        </div>
                       </div>
                       <div className="flex-1">
                         <Header
@@ -144,13 +149,13 @@ const HealthcareBenefitsPage: React.FC = () => {
               </ul>
             </>
           )}
-          <div className="flex justify-center items-center pt-5">
-            <Button
-              label="Add Employee"
-              onClick={() => setModalMode("add")}
-              color={ButtonColor.Blue}
-            />
-          </div>
+        </div>
+        <div className="flex justify-center items-center pt-5">
+          <Button
+            label="Add Employee"
+            onClick={() => setModalMode("add")}
+            color={ButtonColor.Blue}
+          />
         </div>
 
         {(modalMode === "add" || modalMode === "edit") && <EmployeesForm />}

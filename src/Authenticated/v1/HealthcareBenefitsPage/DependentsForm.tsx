@@ -16,7 +16,7 @@ const DependentsForm: FC = () => {
     <FieldArray
       name="dependents"
       render={({ push, remove }) => (
-        <div className="flex flex-col">
+        <div className="flex flex-col overflow-y-scroll max-h-[300px]">
           {values.dependents?.length &&
             values.dependents.map((_, index) => {
               return (
