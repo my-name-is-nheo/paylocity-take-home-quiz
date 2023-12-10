@@ -5,7 +5,7 @@ import { nanoid } from "nanoid";
 import { HealthcareContext } from "./HealthcareContext";
 import { Input, Button, Icon } from "../../../common";
 import { Employee } from "./types";
-import { apiRequest } from "./utilities";
+import { HttpMethod, apiRequest } from "./utilities";
 import { DependentsForm } from "./DependentsForm";
 import { ButtonColor } from "../../../common/ui/Button";
 
@@ -64,7 +64,7 @@ const EmployeesForm: FC = () => {
 
       if (modalMode === "add") {
         const response = await apiRequest(
-          "POST",
+          HttpMethod.POST,
           `/employees`,
           (storedData) => {
             storedData.push({
@@ -86,7 +86,7 @@ const EmployeesForm: FC = () => {
 
       if (modalMode === "edit") {
         const response = await apiRequest(
-          "PUT",
+          HttpMethod.PUT,
           `/employees/${selectedEmployee.id}`,
           (storedData) => {
             const modifiedRecordIndex = storedData.findIndex(

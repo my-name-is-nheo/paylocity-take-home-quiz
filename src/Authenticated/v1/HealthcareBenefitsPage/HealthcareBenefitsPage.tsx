@@ -12,6 +12,7 @@ import { Employee, HealthcareModalModes } from "./types";
 import { EmployeesForm } from "./EmployeesForm";
 import paylocityLogo from "../../../common/assets/paylocity.png";
 import {
+  HttpMethod,
   apiRequest,
   calculateBenefits,
   formatUsingIntl,
@@ -35,7 +36,7 @@ const HealthcareBenefitsPage: React.FC = () => {
     const fetchData = async () => {
       try {
         const response = await apiRequest(
-          "GET",
+          HttpMethod.GET,
           `/users/`,
           (employee) => employee
         );
@@ -61,8 +62,11 @@ const HealthcareBenefitsPage: React.FC = () => {
   );
 
   const handleDelete = useCallback(async () => {
-    await apiRequest("DELETE", `/users/${selectedEmployee.id}`, (employees) =>
-      employees.filter((employee) => employee.id !== selectedEmployee.id)
+    await apiRequest(
+      HttpMethod.DELETE,
+      `/users/${selectedEmployee.id}`,
+      (employees) =>
+        employees.filter((employee) => employee.id !== selectedEmployee.id)
     );
 
     setEmployeeData((prev) =>

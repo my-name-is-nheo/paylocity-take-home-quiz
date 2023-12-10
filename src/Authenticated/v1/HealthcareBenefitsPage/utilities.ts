@@ -8,7 +8,15 @@ import {
   PAYCHECKS_PER_YEAR,
   DISCOUNT_PERCENTAGE,
 } from "./constants";
-export type HttpVerb = "GET" | "POST" | "PUT" | "DELETE";
+export enum HttpMethod {
+  GET = "GET",
+  POST = "POST",
+  PUT = "PUT",
+  DELETE = "DELETE",
+  HEAD = "HEAD",
+  OPTIONS = "OPTIONS",
+  PATCH = "PATCH",
+}
 
 export const employeeSchema = array(
   object({
@@ -33,7 +41,7 @@ const handleResponseErrors = (response: Response) => {
   return response;
 };
 
-const handleErrorCatches = (error: unknown, action: HttpVerb) => {
+const handleErrorCatches = (error: unknown, action: HttpMethod) => {
   if (error instanceof Error) {
     console.error(`${action}: ${error.message}`);
   } else {
@@ -42,7 +50,7 @@ const handleErrorCatches = (error: unknown, action: HttpVerb) => {
 };
 
 export const apiRequest = async (
-  method: HttpVerb,
+  method: HttpMethod,
   endpoint: string,
   callback: (employees: Employee[]) => Employee[]
 ): Promise<Employee[] | void> => {
