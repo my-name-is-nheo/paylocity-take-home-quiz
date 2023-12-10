@@ -54,8 +54,6 @@ export const apiRequest = async (
   endpoint: string,
   callback: (employees: Employee[]) => Employee[]
 ): Promise<Employee[] | void> => {
-  // Call API Endpoint here, maybe introduce try/catch logic
-
   const rawStoredData = localStorage.getItem("state");
 
   let newlyStoredData;
@@ -68,14 +66,8 @@ export const apiRequest = async (
     JSON.parse(rawStoredData || newlyStoredData || "")
   );
 
-  const handleAction = () => {
-    const modifiedData = callback(storedData as Employee[]);
-    localStorage.setItem("state", JSON.stringify(modifiedData));
-    return modifiedData;
-  };
-
   switch (method) {
-    case "GET":
+    case HttpMethod.GET:
       try {
         if (!storedData) {
           throw new Error("Unable to fetch list of employees");
@@ -85,7 +77,7 @@ export const apiRequest = async (
         handleErrorCatches(error, method);
       }
       break;
-    case "PUT":
+    case HttpMethod.PUT:
       {
         try {
           const modifiedData = callback(storedData as Employee[]);
@@ -99,7 +91,7 @@ export const apiRequest = async (
         }
       }
       break;
-    case "POST":
+    case HttpMethod.POST:
       {
         try {
           const modifiedData = callback(storedData as Employee[]);
@@ -113,7 +105,7 @@ export const apiRequest = async (
         }
       }
       break;
-    case "DELETE":
+    case HttpMethod.DELETE:
       {
         try {
           const modifiedData = callback(storedData as Employee[]);
@@ -123,6 +115,10 @@ export const apiRequest = async (
           handleErrorCatches(error, method);
         }
       }
+      break;
+    case HttpMethod.HEAD:
+    case HttpMethod.OPTIONS:
+    case HttpMethod.PATCH:
       break;
   }
 };
