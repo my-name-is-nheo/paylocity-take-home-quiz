@@ -160,53 +160,51 @@ const EmployeesForm: FC = () => {
         <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
           <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-3xl">
             <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-              <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full sm:mx-0 sm:h-10 sm:w-10">
+              <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full sm:h-10 sm:w-10">
                 <Icon icon="profile" alt="employees-form-profile-logo" />
-              </div>
-              <h3
-                className="text-base font-semibold leading-6 text-gray-900"
-                id="modal-title"
-              >
-                {modalMode === "add" ? "Add " : "Edit "}
-                Employee
-              </h3>
-              <div>
-                <Formik<EmployeesFormSchema>
-                  validationSchema={SCHEMA}
-                  initialValues={initialValues}
-                  onSubmit={handleModalSubmit}
+                <h3
+                  className="font-semibold  text-gray-900 whitespace-nowrap"
+                  id="modal-title"
                 >
-                  {() => (
-                    <Form className="flex flex-col items-center">
-                      {employeeInputFieldInfo.map((info) => (
-                        <Input
-                          key={`employees-form-input-${info.placeHolder}`}
-                          name={info.name}
-                          placeHolder={info.placeHolder}
-                          label={info.label}
-                        />
-                      ))}
-                      <h4 className="font-semibold">Dependent(s)</h4>
-                      <DependentsForm />
-                      <div className="flex self-center">
-                        {formButtons.map(({ type, label, color, onClick }) => (
-                          <div
-                            className="mx-1 my-2"
-                            key={`employees-form-button-${label}-${label.length}`}
-                          >
-                            <Button
-                              type={type}
-                              label={label}
-                              color={color}
-                              onClick={onClick}
-                            />
-                          </div>
-                        ))}
-                      </div>
-                    </Form>
-                  )}
-                </Formik>
+                  {modalMode === "add" ? "Add " : "Edit "} Employee
+                </h3>
               </div>
+
+              <Formik<EmployeesFormSchema>
+                validationSchema={SCHEMA}
+                initialValues={initialValues}
+                onSubmit={handleModalSubmit}
+              >
+                {() => (
+                  <Form className="flex flex-col items-center">
+                    {employeeInputFieldInfo.map((info) => (
+                      <Input
+                        key={`employees-form-input-${info.placeHolder}`}
+                        name={info.name}
+                        placeHolder={info.placeHolder}
+                        label={info.label}
+                      />
+                    ))}
+                    <h4 className="font-semibold">Dependent(s)</h4>
+                    <DependentsForm />
+                    <div className="flex self-center">
+                      {formButtons.map(({ type, label, color, onClick }) => (
+                        <div
+                          className="mx-1 my-2"
+                          key={`employees-form-button-${label}-${label.length}`}
+                        >
+                          <Button
+                            type={type}
+                            label={label}
+                            color={color}
+                            onClick={onClick}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </Form>
+                )}
+              </Formik>
             </div>
           </div>
         </div>
