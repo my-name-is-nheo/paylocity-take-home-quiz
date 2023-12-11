@@ -92,6 +92,7 @@ const HealthcareBenefitsPage: React.FC = () => {
           label="Paylocity Healthcare Benefits"
           imageClassName="h-10 w-10 rounded-full"
           headerClassName="text-lg font-medium text-slate-900"
+          alt="paylocity-logo"
         />
         <div className="flex justify-center flex-col border border-black p-4 overflow-y-auto">
           {!sortedEmployeeData.length ? (
@@ -186,6 +187,7 @@ const HealthcareBenefitsPage: React.FC = () => {
             message="Are you sure you want to delete ? This will delete the
             dependents as well."
             icon="delete"
+            alt="healthcare-benefits-page-delete-logo"
           />
         )}
       </div>
