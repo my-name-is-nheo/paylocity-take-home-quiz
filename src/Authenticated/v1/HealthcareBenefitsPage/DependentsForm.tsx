@@ -91,7 +91,7 @@ const DependentsForm: FC = () => {
                         }
                       }}
                       color={ButtonColor.Red}
-                      className="h-10 ml-2"
+                      className="h-10 mt-2 md:ml-2"
                     />
                   </div>
                   {index === (values.dependents?.length || 0) - 1 && (
