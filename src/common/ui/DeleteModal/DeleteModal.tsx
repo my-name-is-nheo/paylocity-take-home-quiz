@@ -71,4 +71,9 @@ const DeleteModal: FC<DeleteModalProps & IconProps> = ({
   );
 };
 
+DeleteModal.defaultProps = {
+  cancelText: "No",
+  submitText: "Yes",
+};
+
 export { DeleteModal };

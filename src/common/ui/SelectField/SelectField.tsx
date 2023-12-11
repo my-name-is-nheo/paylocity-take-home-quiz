@@ -30,4 +30,8 @@ const SelectField: FC<{
   );
 };
 
+SelectField.defaultProps = {
+  className: undefined,
+};
+
 export { SelectField };

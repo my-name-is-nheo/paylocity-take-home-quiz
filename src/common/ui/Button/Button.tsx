@@ -2,8 +2,8 @@ import { FC, ButtonHTMLAttributes } from "react";
 import { ButtonColor } from "./types";
 
 const Button: FC<{
-  onClick?: () => void;
   label: string;
+  onClick?: () => void;
   color?: ButtonColor;
   type?: ButtonHTMLAttributes<HTMLButtonElement>["type"];
   className?: string;
@@ -20,6 +20,13 @@ const Button: FC<{
       {label}
     </button>
   );
+};
+
+Button.defaultProps = {
+  onClick: undefined,
+  color: undefined,
+  type: undefined,
+  className: undefined,
 };
 
 export { Button };

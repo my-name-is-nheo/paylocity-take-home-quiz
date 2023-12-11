@@ -12,4 +12,9 @@ const Header: FC<HeaderProps> = ({ label, headerClassName, onLabelClick }) => (
   </h3>
 );
 
+Header.defaultProps = {
+  headerClassName: undefined,
+  onLabelClick: undefined,
+};
+
 export { Header };

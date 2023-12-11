@@ -20,4 +20,8 @@ const Input: FC<{
   </div>
 );
 
+Input.defaultProps = {
+  className: undefined,
+};
+
 export { Input };

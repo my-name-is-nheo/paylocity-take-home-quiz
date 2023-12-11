@@ -4,7 +4,7 @@ import { Header, HeaderProps } from "../Header/Header";
 interface HeaderWithImageProps extends HeaderProps {
   source: string;
   imageClassName: string;
-  alt?: string;
+  alt: string;
 }
 
 const HeaderWithImage: FC<HeaderWithImageProps> = ({

@@ -5,4 +5,8 @@ const EmptyState: FC<{
   className?: string;
 }> = ({ text, className }) => <h3 className={className}>{text}</h3>;
 
+EmptyState.defaultProps = {
+  className: undefined,
+};
+
 export { EmptyState };

@@ -15,4 +15,8 @@ const Icon: FC<IconProps> = ({ icon, className, alt }) => (
   />
 );
 
+Icon.defaultProps = {
+  className: undefined,
+};
+
 export { Icon };
