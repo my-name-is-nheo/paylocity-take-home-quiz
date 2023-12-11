@@ -42,7 +42,7 @@ const DependentsForm: FC = () => {
                     ))}
                     <SelectField
                       name={`dependents[${index}].relationship`}
-                      className="flex-1 h-20px self-center"
+                      className="flex-1 h-[26px] self-center  border border-gray-300"
                       labelOptions={[
                         {
                           value: "Child",
