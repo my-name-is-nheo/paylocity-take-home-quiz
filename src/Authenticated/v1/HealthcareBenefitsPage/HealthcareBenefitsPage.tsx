@@ -112,7 +112,7 @@ const HealthcareBenefitsPage: React.FC = () => {
                 {sortedEmployeeData.map((employee) => (
                   <div
                     key={`healthcare-benefits-page-table-${employee.id}`}
-                    className="border border-black hover:border-black my-2 px-2 py-3"
+                    className="border border-black hover:border-black my-2 px-2 py-3 min-w-[200px]"
                   >
                     <li className="py-2">
                       {employee.first_name} {employee.last_name}
