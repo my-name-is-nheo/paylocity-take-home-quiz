@@ -11,7 +11,6 @@ const DependentsForm: FC = () => {
       setValues((prev) => ({ ...prev, dependents: [emptyDependant] }));
     }
   }, [values.dependents]);
-
   return (
     <FieldArray
       name="dependents"
@@ -22,6 +21,39 @@ const DependentsForm: FC = () => {
               return (
                 <Fragment key={`dependents-form-item-${index}`}>
                   <div className="flex flex-col py-2 items-center min-w-[200px] md:flex-row">
+                    {[
+                      {
+                        name: `dependents[${index}].first_name`,
+                        label: "First Name",
+                        placeHolder: "First...",
+                      },
+                      {
+                        name: `dependents[${index}].last_name`,
+                        label: "Last Name",
+                        placeHolder: "Last...",
+                      },
+                    ].map((info) => (
+                      <Input
+                        name={info.name}
+                        placeHolder={info.placeHolder}
+                        label={info.label}
+                        key={`dependents-form-input-${info.name}-${index}`}
+                      />
+                    ))}
+                    <SelectField
+                      name={`dependents[${index}].relationship`}
+                      className="flex-1 h-20px self-center"
+                      labelOptions={[
+                        {
+                          value: "Child",
+                          label: "Child",
+                        },
+                        {
+                          value: "Spouse",
+                          label: "Spouse",
+                        },
+                      ]}
+                    />
                     <Button
                       type="button"
                       label="Remove"
@@ -59,40 +91,7 @@ const DependentsForm: FC = () => {
                         }
                       }}
                       color={ButtonColor.Red}
-                      className="h-10"
-                    />
-                    {[
-                      {
-                        name: `dependents[${index}].first_name`,
-                        label: "First Name",
-                        placeHolder: "First...",
-                      },
-                      {
-                        name: `dependents[${index}].last_name`,
-                        label: "Last Name",
-                        placeHolder: "Last...",
-                      },
-                    ].map((info) => (
-                      <Input
-                        name={info.name}
-                        placeHolder={info.placeHolder}
-                        label={info.label}
-                        key={`dependents-form-input-${info.name}-${index}`}
-                      />
-                    ))}
-                    <SelectField
-                      name={`dependents[${index}].relationship`}
-                      className="flex-1 h-20px self-center"
-                      labelOptions={[
-                        {
-                          value: "Child",
-                          label: "Child",
-                        },
-                        {
-                          value: "Spouse",
-                          label: "Spouse",
-                        },
-                      ]}
+                      className="h-10 ml-2"
                     />
                   </div>
                   {index === (values.dependents?.length || 0) - 1 && (
