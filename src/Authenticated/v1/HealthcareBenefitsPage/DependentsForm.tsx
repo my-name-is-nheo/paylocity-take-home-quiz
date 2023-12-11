@@ -21,7 +21,7 @@ const DependentsForm: FC = () => {
             values.dependents.map((_, index) => {
               return (
                 <Fragment key={`dependents-form-item-${index}`}>
-                  <div className="flex flex-row py-2 items-center">
+                  <div className="flex flex-col py-2 items-center min-w-[200px] md:flex-row">
                     <Button
                       type="button"
                       label="Remove"

@@ -51,7 +51,7 @@ const handleErrorCatches = (error: unknown, action: HttpMethod) => {
 
 export const apiRequest = async (
   method: HttpMethod,
-  endpoint: string,
+  endpoint: string, // not used for this assignment but in the real application, would require an optional endpoint, body, and query paramaters
   callback: (employees: Employee[]) => Employee[]
 ): Promise<Employee[] | void> => {
   const rawStoredData = localStorage.getItem("state");

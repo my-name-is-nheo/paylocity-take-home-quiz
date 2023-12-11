@@ -65,6 +65,7 @@ const EmployeesForm: FC = () => {
       if (modalMode === "add") {
         const response = await apiRequest(
           HttpMethod.POST,
+          // would usually send a body
           `/employees`,
           (storedData) => {
             storedData.push({
