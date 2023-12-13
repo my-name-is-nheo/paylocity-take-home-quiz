@@ -10,13 +10,25 @@ import { DependentsForm } from "./DependentsForm";
 import { ButtonColor } from "../../../common/ui/Button";
 
 const SCHEMA = object({
-  first_name: string().min(2, "Two letters!").required("Required Field!"),
-  last_name: string().min(2, "Two letters!").required("Required Field!"),
+  first_name: string()
+    .min(2, "Two letters!")
+    .matches(/^[A-Za-z]+$/, "Only alphabetic characters are allowed!")
+    .required("Required Field!"),
+  last_name: string()
+    .min(2, "Two letters!")
+    .matches(/^[A-Za-z]+$/, "Only alphabetic characters are allowed!")
+    .required("Required Field!"),
   dependents: array(
     object({
       //TODO: update validation to be more specific
-      first_name: string(),
-      last_name: string(),
+      first_name: string().matches(
+        /^[A-Za-z]+$/,
+        "Only alphabetic characters are allowed!"
+      ),
+      last_name: string().matches(
+        /^[A-Za-z]+$/,
+        "Only alphabetic characters are allowed!"
+      ),
       relationship: string().oneOf(["Child", "Spouse"], "Invalid Relationship"),
     })
   ),
